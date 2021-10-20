@@ -3,7 +3,7 @@ local io = require("io")
 
 local edooriolib = {}
 
-local edooriolib.sides = {}
+edooriolib.sides = {}
 
 local function componentEvent(evtf, ctype)
   local comp
@@ -33,7 +33,7 @@ local function componentCycle(ctype, func, ...)
   return comp
 end
 
-local function edooriolib.i_setup()
+function edooriolib.i_setup()
   require("term").clear()
   print("EDoorIO Setup:")
   local done = false
@@ -47,7 +47,6 @@ local function edooriolib.i_setup()
     side.keypad = componentEvent("keypad", "os_keypad")
     print("Type yes or no to find the corisponding Iron Noteblock")
     side.inoteblock = componentCycle("iron_noteblock","playNote",1)
-
 
     print("Side "..sides.." Is:")
     print("MagReader Address:      "..side.magreader.address)
