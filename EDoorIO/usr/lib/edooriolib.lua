@@ -1,7 +1,7 @@
-local edio = {}
+local edooriolib = {}
 
-function edio.sayHi()
+function edooriolib.sayHi()
   print("I am here! :D")
 end
 
-return edio
+return edooriolib

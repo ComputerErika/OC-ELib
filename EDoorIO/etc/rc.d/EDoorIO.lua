@@ -1,4 +1,4 @@
 function start()
-  local edio = require("edoorio")
+  local edio = require("edooriolib")
   edio.sayHi()
 end
