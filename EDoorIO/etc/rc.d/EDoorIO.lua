@@ -1,3 +1,4 @@
 function start()
-  print("Test")
+  edio = require("edoorio")
+  edio.do()
 end
