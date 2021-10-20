@@ -1,5 +1,7 @@
 local edio = {}
 
-function edio.do()
-  print("I am here")
+function edio.sayHi()
+  print("I am here! :D")
 end
+
+return edio
