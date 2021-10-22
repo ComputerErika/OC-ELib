@@ -10,9 +10,11 @@ local function componentEvent(evtf, ctype)
   local comp
   while true do
     _, adr = event.pull(1, evtf)
-    if component.type(adr) == ctype then
-      comp = component.proxy(adr)
-      break
+    if adr then
+      if component.type(adr) == ctype then
+        comp = component.proxy(adr)
+        break
+      end
     end
   end
   return comp
