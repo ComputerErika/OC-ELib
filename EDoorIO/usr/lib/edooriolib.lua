@@ -8,7 +8,7 @@ edooriolib.sides = {}
 local function componentEvent(evtf, ctype)
   local comp
   while true do
-    _, adr = event.pull(evtf, 1)
+    _, adr = event.pull(1, evtf)
     if component.type(adr) == ctype then
       comp = component.get(adr)
       break
@@ -21,7 +21,7 @@ local function componentCycle(ctype, func, ...)
   local ctypes = component.list(ctype)
   local comp
   repeat
-    for adr in pairs(ctypes)
+    for adr in pairs(ctypes) do
       component.get(adr)[func](...)
       io.write("Is this the correct "..ctype.."? [Y/n] ")
       if ((io.read() or "n").."y"):match("^%s*[Yy]") then
