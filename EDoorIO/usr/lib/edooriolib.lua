@@ -10,7 +10,7 @@ local function componentEvent(evtf, ctype)
   while true do
     _, adr = event.pull(1, evtf)
     if component.type(adr) == ctype then
-      comp = component.get(adr)
+      comp = component.proxy(adr)
       break
     end
   end
@@ -21,11 +21,13 @@ local function componentCycle(ctype, func, ...)
   local ctypes = component.list(ctype)
   local comp
   repeat
+    print("Preparing to cycle through "..ctype.."\'s")
+    require("os").sleep(3)
     for adr in pairs(ctypes) do
-      component.get(adr)[func](...)
+      component.proxy(adr)[func](...)
       io.write("Is this the correct "..ctype.."? [Y/n] ")
       if ((io.read() or "n").."y"):match("^%s*[Yy]") then
-        comp = component.get(adr)
+        comp = component.proxy(adr)
         break
       end
     end
@@ -55,7 +57,7 @@ function edooriolib.i_setup()
     io.write("Is this correct? [Y/n] ")
     if ((io.read() or "n").."y"):match("^%s*[Yy]") then
       sides = sides + 1
-      edooriolib.sides:insert(side)
+      table.insert(edooriolib.sides, side)
       print("Sucessfully ineserted side")
     else
       print("Discarding side")
