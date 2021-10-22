@@ -1,4 +1,5 @@
 local component = require("component")
+local event = require("event")
 local io = require("io")
 
 local edooriolib = {}
